@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/TP2_POO4_controleur.iml" filepath="$PROJECT_DIR$/TP2_POO4_controleur.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../TP2_POO4_modele/TP2_POO4_modele.iml" filepath="$PROJECT_DIR$/../TP2_POO4_modele/TP2_POO4_modele.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../TP2_POO4_vue/TP2_POO4_vue.iml" filepath="$PROJECT_DIR$/../TP2_POO4_vue/TP2_POO4_vue.iml" />
+    </modules>
+  </component>
+</project>
