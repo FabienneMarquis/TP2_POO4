@@ -46,7 +46,7 @@
                         </descriptorRefs>
                         <archive>
                             <manifest>
-                                <mainClass>TP2_POO4_controleur.Controleur</mainClass>
+                                <mainClass>TP2_POO4_controleur.Controller</mainClass>
                             </manifest>
                         </archive>
                     </configuration>
