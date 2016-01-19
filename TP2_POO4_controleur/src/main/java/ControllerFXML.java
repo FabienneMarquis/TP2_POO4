@@ -9,10 +9,8 @@ import java.util.Observer;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-/**
- * Created by 1494778 on 2016-01-19.
- */
-public class ControllerFXML implements Initializable, Observer {
+public class ControllerFXML implements Initializable, Observer{
+
     @FXML
     private TextField fieldTextTemp1;
 
@@ -21,6 +19,9 @@ public class ControllerFXML implements Initializable, Observer {
 
     @FXML
     private TextField fieldTextDelta1;
+
+    @FXML
+    private TextField fieldTextDelta2;
 
     @FXML
     private Button btnStart;
@@ -63,15 +64,7 @@ public class ControllerFXML implements Initializable, Observer {
 
     @FXML
     void doRAZ(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("");
-        alert.setHeaderText("?");
-        alert.setContentText("");
-        Optional<ButtonType> result = alert.showAndWait();
 
-        if (result.get() == ButtonType.OK){
-
-        }
     }
 
     @FXML
@@ -83,6 +76,7 @@ public class ControllerFXML implements Initializable, Observer {
     void start(ActionEvent event) {
 
     }
+
 
     @FXML
     void stop(ActionEvent event) {
