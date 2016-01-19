@@ -11,9 +11,9 @@ import java.util.ResourceBundle;
 
 
 /**
- * Created by fabienne et gabriel  on 2016-01-12.
+ * Created by 1494778 on 2016-01-19.
  */
-public class Controleur extends Application implements Initializable{
+public class Controller extends Application implements Initializable{
 
     @FXML
     private GridPane root;
