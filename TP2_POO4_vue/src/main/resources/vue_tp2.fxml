@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControleurFXML">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="200.0" minHeight="0.0" prefHeight="78.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="200.0" minHeight="7.0" prefHeight="84.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="386.0" minHeight="10.0" prefHeight="77.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="417.0" minHeight="10.0" prefHeight="188.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="428.0" minHeight="10.0" prefHeight="273.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Label text="Délais d'exécution" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0">
+                     <children>
+                        <Label text="T1 (en ms)" />
+                        <TextField fx:id="fieldTextTemp1" prefWidth="150.0" />
+                     </children>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0">
+                     <children>
+                        <Label text="T2 (en ms)" />
+                        <TextField fx:id="fieldTextTemp2" />
+                     </children>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+         <children>
+            <Label text="Quantité">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Label>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="57.0" prefWidth="150.0">
+                     <children>
+                        <Label text="Delta T1" />
+                        <TextField fx:id="fieldTextDelta1" />
+                     </children>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0">
+                     <children>
+                        <Label text="Delta T2" />
+                        <TextField fx:id="fieldTextDelta1">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
+         <children>
+            <Label text="Exécution des opétations" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="boutonDemarrer" mnemonicParsing="false" onAction="#start" text="Démarrer">
+                     <HBox.margin>
+                        <Insets right="60.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="boutonArreter" mnemonicParsing="false" onAction="#stop" text="Arrêter">
+                     <HBox.margin>
+                        <Insets right="60.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="boutonRAZ" mnemonicParsing="false" onAction="#doRAZ" text="R.A.Z.">
+                     <HBox.margin>
+                        <Insets right="60.0" />
+                     </HBox.margin></Button>
+                  <Button fx:id="boutonQuitter" mnemonicParsing="false" onAction="#quitter" text="Quitter" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
+         <children>
+            <Label text="Sommaire des opérations" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Quantité en stock: ">
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets right="150.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="textFieldQtéStock" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="53.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Ruptures de stock:">
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets right="150.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="textFieldRuptureStock" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="103.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Total des pénalités:">
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets right="150.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="textFieldTotalPenalite" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="27.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Stock moyen:">
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets right="180.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="textFieldStockmoyen" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="103.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Coût stock moyen: ">
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets right="150.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="textFieldCoutStockmoyen" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="4">
+         <children>
+            <Label text="Tableau des opérations" />
+            <TableView fx:id="tableauOperation" maxWidth="480.0" prefHeight="394.0" prefWidth="480.0">
+              <columns>
+                <TableColumn fx:id="tableauNum" prefWidth="60.0" text="Num" />
+                <TableColumn fx:id="tableauTx" prefWidth="60.0" text="T(x)" />
+                  <TableColumn fx:id="tableauDelta" prefWidth="60.0" text="Delta" />
+                  <TableColumn prefWidth="60.0" text="Stock" />
+                  <TableColumn prefWidth="60.0" text="RS" />
+                  <TableColumn prefWidth="60.0" text="QRS" />
+                  <TableColumn minWidth="12.0" prefWidth="60.0" text="P($)" />
+                  <TableColumn minWidth="12.0" prefWidth="60.0" text="Qte Moy" />
+              </columns>
+            </TableView>
+         </children>
+      </VBox>
+   </children>
+</GridPane>
