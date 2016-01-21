@@ -26,7 +26,7 @@ public class Controller extends Application implements Initializable{
     }
 
     public void start(Stage primaryStage) throws Exception {
-        String path = "./main/resources/vue_tp2.fxml";
+        String path = "./main/resources/vue_tp2_2.fxml";
         System.out.print(getClass().getResource(path));
         root = FXMLLoader.load(getClass().getResource(
                 path));
