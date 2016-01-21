@@ -9,11 +9,22 @@ public class ThrConsumme extends Thread {
 
 
     ThrConsumme (Reserve reserve, int temps1, int deltaT1){
-
+        this.temps1=temps1;
+        this.deltaT1=deltaT1;
+        reserve.consommez(deltaT1);
+        attend(temps1);
     }
     public void run( ){
-
+        if(ThrConsumme.this != null){
+            ThrConsumme.this.run();
+        }
     }
 
-
+    private void attend(int t){
+        try{
+            Thread.sleep(t);
+        }catch (InterruptedException exc){
+            exc.printStackTrace();
+        }
+    }
 }

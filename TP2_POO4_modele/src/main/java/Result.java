@@ -5,7 +5,7 @@ package main.java;
  */
 public class Result {
     private int num;
-    private int tempX;
+    private String tempX;
     private int delta;
     private int stock;
     private int ruptureStock;
@@ -13,14 +13,14 @@ public class Result {
     private int costPenality;
     private int averageStock;
 
-    Result(int  num, int tempX, int delta, int stock, int ruptureStock, int quantityRuptureStock, int costPenalit,int averageStock){
+    Result(int  num, String tempX, int delta, int stock, int ruptureStock, int quantityRuptureStock, int costPenality,int averageStock){
         this.num=num;
         this.tempX=tempX;
         this.delta=delta;
         this.stock=stock;
         this.ruptureStock=ruptureStock;
         this.quantityRuptureStock=quantityRuptureStock;
-        this.costPenality=costPenalit;
+        this.costPenality=costPenality;
         this.averageStock=averageStock;
 
     }
@@ -34,11 +34,11 @@ public class Result {
         this.num = num;
     }
 
-    public int getTempX() {
+    public String getTempX() {
         return tempX;
     }
 
-    public void setTempX(int tempX) {
+    public void setTempX(String tempX) {
         this.tempX = tempX;
     }
 
