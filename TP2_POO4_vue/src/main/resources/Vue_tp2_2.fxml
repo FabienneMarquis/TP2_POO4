@@ -5,16 +5,16 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="ControllerFXML">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerFXML">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints maxHeight="200.0" minHeight="0.0" prefHeight="78.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="200.0" minHeight="7.0" prefHeight="84.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="386.0" minHeight="10.0" prefHeight="77.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="417.0" minHeight="10.0" prefHeight="188.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="428.0" minHeight="10.0" prefHeight="273.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="229.0" minHeight="0.0" prefHeight="36.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="280.0" minHeight="10.0" prefHeight="62.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="322.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="344.0" minHeight="10.0" prefHeight="151.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="263.0" minHeight="10.0" prefHeight="263.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
@@ -79,30 +79,7 @@
             </HBox>
          </children>
       </VBox>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
-         <children>
-            <Label text="Exécution des opétations" />
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Button fx:id="btnStart" mnemonicParsing="false" onAction="#start" text="Démarrer">
-                     <HBox.margin>
-                        <Insets right="60.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button fx:id="btnStop" mnemonicParsing="false" onAction="#stop" text="Arrêter">
-                     <HBox.margin>
-                        <Insets right="60.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button fx:id="tnRAZ" mnemonicParsing="false" onAction="#doRAZ" text="R.A.Z.">
-                     <HBox.margin>
-                        <Insets right="60.0" />
-                     </HBox.margin></Button>
-                  <Button fx:id="btnQuit" mnemonicParsing="false" onAction="#quit" text="Quitter" />
-               </children>
-            </HBox>
-         </children>
-      </VBox>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" />
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
          <children>
             <Label text="Sommaire des opérations" />
@@ -177,17 +154,31 @@
          <children>
             <Label text="Tableau des opérations" />
             <TableView fx:id="tableauOperation" maxWidth="480.0" prefHeight="394.0" prefWidth="480.0">
-              <columns>
-                <TableColumn fx:id="tableauNum" prefWidth="60.0" text="Num" />
-                <TableColumn fx:id="tableauTx" prefWidth="60.0" text="T(x)" />
+               <columns>
+                  <TableColumn fx:id="tableauNum" prefWidth="60.0" text="Num" />
+                  <TableColumn fx:id="tableauTx" prefWidth="60.0" text="T(x)" />
                   <TableColumn fx:id="tableauDelta" prefWidth="60.0" text="Delta" />
                   <TableColumn prefWidth="60.0" text="Stock" />
                   <TableColumn prefWidth="60.0" text="RS" />
                   <TableColumn prefWidth="60.0" text="QRS" />
                   <TableColumn minWidth="12.0" prefWidth="60.0" text="P($)" />
                   <TableColumn minWidth="12.0" prefWidth="60.0" text="Qte Moy" />
-              </columns>
+               </columns>
             </TableView>
+         </children>
+      </VBox>
+      <VBox prefHeight="82.0" prefWidth="500.0" />
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
+         <children>
+            <Label text="Exécution des opétations" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="btnStart" mnemonicParsing="false" onAction="#start" text="Démarrer" />
+                  <Button fx:id="btnStop" mnemonicParsing="false" onAction="#stop" text="Arrêter" />
+                  <Button fx:id="tnRAZ" mnemonicParsing="false" onAction="#doRAZ" text="R.A.Z." />
+                  <Button fx:id="btnQuit" mnemonicParsing="false" onAction="#quit" text="Quitter" />
+               </children>
+            </HBox>
          </children>
       </VBox>
    </children>
