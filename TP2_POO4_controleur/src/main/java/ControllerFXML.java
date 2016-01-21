@@ -2,6 +2,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import main.java.ConnectMySQL;
 
 import java.net.URL;
 import java.util.Observable;

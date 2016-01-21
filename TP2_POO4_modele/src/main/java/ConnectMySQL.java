@@ -16,11 +16,11 @@ public class ConnectMySQL extends Observable{
     private static String UTILISATEUR = "javauser";
     private static String MOT_DE_PASSE = "TP6";
 
-   public void addStatistic(int  num, int tempX, int delta, int stock, int ruptureStock, int quantityRuptureStock, int costPenalit,int averageStock ) {
+   public void addStatistic(int  num, int tempX, int delta, int stock, int ruptureStock, int quantityRuptureStock, int costPenality,int averageStock ) {
        Connection connexion = null;
 
        String insertlist = "Insert into film values ('" + num + "' , '" + tempX + "','" + delta + "','" + stock + "','"
-               + ruptureStock + "','" + quantityRuptureStock + "','" + costPenalit + "','" + averageStock + "')";
+               + ruptureStock + "','" + quantityRuptureStock + "','" + costPenality + "','" + averageStock + "')";
        try {
            connexion = DriverManager.getConnection(URL, UTILISATEUR,
                    MOT_DE_PASSE);
@@ -31,8 +31,7 @@ public class ConnectMySQL extends Observable{
 
            if (statut == 1) {
 
-               /*JOptionPane.showMessageDialog(null,
-                       "Le film fut ajouté avec succès!","SUCCESS!",JOptionPane.INFORMATION_MESSAGE);*/
+
 
            }
 
@@ -71,9 +70,9 @@ public class ConnectMySQL extends Observable{
 			/* Récupération des données du résultat de la requête de lecture */
             while (resultat.next()) {
 
-                Result result = new Result((Integer.parseInt(resultat.getString("num"))),(Integer.parseInt(resultat.getString("tempX"))),(Integer.parseInt(resultat.getString("delta"))),
+                Result result = new Result((Integer.parseInt(resultat.getString("num"))),(resultat.getString("tempX")),(Integer.parseInt(resultat.getString("delta"))),
                         (Integer.parseInt(resultat.getString("stock"))),(Integer.parseInt(resultat.getString("ruptureStock"))),(Integer.parseInt(resultat.getString("quantityRuptureStock"))),
-                        (Integer.parseInt(resultat.getString("costPenalit"))),(Integer.parseInt(resultat.getString("averageStock"))));
+                        (Integer.parseInt(resultat.getString("costPenality"))),(Integer.parseInt(resultat.getString("averageStock"))));
                 statistique.add(result);
             }
 
