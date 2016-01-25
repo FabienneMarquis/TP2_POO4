@@ -6,18 +6,22 @@ package main.java;
 public class ThrConsumme extends Thread {
     private int temps1;
     private int deltaT1;
+    private Reserve reserve;
+    private boolean active;
 
 
-    ThrConsumme (Reserve reserve, int temps1, int deltaT1){
+    public ThrConsumme (Reserve reserve, int temps1, int deltaT1){
         this.temps1=temps1;
         this.deltaT1=deltaT1;
-        reserve.consommez(deltaT1);
-        attend(temps1);
+        this.reserve = reserve;
+        active = false;
     }
-    public void run( ){
-        if(ThrConsumme.this != null){
-            ThrConsumme.this.run();
-        }
+    public void run(){
+        reserve.consommez(deltaT1);
+
+    }
+    public void close(){
+        this.active = false;
     }
 
     private void attend(int t){
@@ -26,5 +30,13 @@ public class ThrConsumme extends Thread {
         }catch (InterruptedException exc){
             exc.printStackTrace();
         }
+    }
+
+    public int getDeltaT1() {
+        return deltaT1;
+    }
+
+    public int getTemps1() {
+        return temps1;
     }
 }
