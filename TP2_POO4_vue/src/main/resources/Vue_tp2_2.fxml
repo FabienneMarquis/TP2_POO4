@@ -5,7 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerFXML">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerFXML">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
@@ -79,7 +79,6 @@
             </HBox>
          </children>
       </VBox>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" />
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
          <children>
             <Label text="Sommaire des opérations" />
@@ -158,16 +157,15 @@
                   <TableColumn fx:id="tableauNum" prefWidth="60.0" text="Num" />
                   <TableColumn fx:id="tableauTx" prefWidth="60.0" text="T(x)" />
                   <TableColumn fx:id="tableauDelta" prefWidth="60.0" text="Delta" />
-                  <TableColumn prefWidth="60.0" text="Stock" />
-                  <TableColumn prefWidth="60.0" text="RS" />
-                  <TableColumn prefWidth="60.0" text="QRS" />
-                  <TableColumn minWidth="12.0" prefWidth="60.0" text="P($)" />
-                  <TableColumn minWidth="12.0" prefWidth="60.0" text="Qte Moy" />
+                  <TableColumn fx:id="tableauStock" prefWidth="60.0" text="Stock" />
+                  <TableColumn fx:id="tableauRS" prefWidth="60.0" text="RS" />
+                  <TableColumn fx:id="tableauQRS" prefWidth="60.0" text="QRS" />
+                  <TableColumn fx:id="tableauPenalite" minWidth="12.0" prefWidth="60.0" text="P($)" />
+                  <TableColumn fx:id="tableauAvg" minWidth="12.0" prefWidth="60.0" text="Qte Moy" />
                </columns>
             </TableView>
          </children>
       </VBox>
-      <VBox prefHeight="82.0" prefWidth="500.0" />
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
          <children>
             <Label text="Exécution des opétations" />
@@ -176,7 +174,6 @@
                   <Button fx:id="btnStart" mnemonicParsing="false" onAction="#start" text="Démarrer" />
                   <Button fx:id="btnStop" mnemonicParsing="false" onAction="#stop" text="Arrêter" />
                   <Button fx:id="tnRAZ" mnemonicParsing="false" onAction="#doRAZ" text="R.A.Z." />
-                  <Button fx:id="btnQuit" mnemonicParsing="false" onAction="#quit" text="Quitter" />
                </children>
             </HBox>
          </children>

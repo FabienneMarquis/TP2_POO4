@@ -1,92 +1,91 @@
 package main.java;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 /**
  * Created by 1494778 on 2016-01-21.
  */
 public class Result {
-    private int num;
-    private String tempX;
-    private int delta;
-    private int stock;
-    private int ruptureStock;
-    private int quantityRuptureStock;
-    private int costPenality;
-    private int averageStock;
 
-    Result(int  num, String tempX, int delta, int stock, int ruptureStock, int quantityRuptureStock, int costPenality,int averageStock){
-        this.num=num;
-        this.tempX=tempX;
-        this.delta=delta;
-        this.stock=stock;
-        this.ruptureStock=ruptureStock;
-        this.quantityRuptureStock=quantityRuptureStock;
-        this.costPenality=costPenality;
-        this.averageStock=averageStock;
+    private StringProperty tempX;
+    private IntegerProperty num, delta, stock, ruptureStock, quantityRuptureStock, costPenality, averageStock;
 
-    }
+    Result(int num, String tempX, int delta, int stock, int ruptureStock, int quantityRuptureStock, int costPenality, int averageStock) {
+        this.num = new SimpleIntegerProperty(num);
+        this.tempX = new SimpleStringProperty(tempX);
+        this.delta = new SimpleIntegerProperty(delta);
+        this.stock = new SimpleIntegerProperty(stock);
+        this.ruptureStock = new SimpleIntegerProperty(ruptureStock);
+        this.quantityRuptureStock = new SimpleIntegerProperty(quantityRuptureStock);
+        this.costPenality = new SimpleIntegerProperty(costPenality);
+        this.averageStock = new SimpleIntegerProperty(averageStock);
 
-
-    public int getNum() {
-        return num;
-    }
-
-    public void setNum(int num) {
-        this.num = num;
     }
 
     public String getTempX() {
+        return tempX.get();
+    }
+
+    public StringProperty tempXProperty() {
         return tempX;
     }
 
-    public void setTempX(String tempX) {
-        this.tempX = tempX;
+    public int getNum() {
+        return num.get();
+    }
+
+    public IntegerProperty numProperty() {
+        return num;
     }
 
     public int getDelta() {
+        return delta.get();
+    }
+
+    public IntegerProperty deltaProperty() {
         return delta;
     }
 
-    public void setDelta(int delta) {
-        this.delta = delta;
+    public int getStock() {
+        return stock.get();
     }
 
-    public int getStock() {
+    public IntegerProperty stockProperty() {
         return stock;
     }
 
-    public void setStock(int stock) {
-        this.stock = stock;
+    public int getRuptureStock() {
+        return ruptureStock.get();
     }
 
-    public int getRuptureStock() {
+    public IntegerProperty ruptureStockProperty() {
         return ruptureStock;
     }
 
-    public void setRuptureStock(int ruptureStock) {
-        this.ruptureStock = ruptureStock;
-    }
-
-    public int getCostPenality() {
-        return costPenality;
-    }
-
-    public void setCostPenality(int costPenality) {
-        this.costPenality = costPenality;
-    }
-
     public int getQuantityRuptureStock() {
+        return quantityRuptureStock.get();
+    }
+
+    public IntegerProperty quantityRuptureStockProperty() {
         return quantityRuptureStock;
     }
 
-    public void setQuantityRuptureStock(int quantityRuptureStock) {
-        this.quantityRuptureStock = quantityRuptureStock;
+    public int getCostPenality() {
+        return costPenality.get();
+    }
+
+    public IntegerProperty costPenalityProperty() {
+        return costPenality;
     }
 
     public int getAverageStock() {
-        return averageStock;
+        return averageStock.get();
     }
 
-    public void setAverageStock(int averageStock) {
-        this.averageStock = averageStock;
+    public IntegerProperty averageStockProperty() {
+        return averageStock;
     }
 }
