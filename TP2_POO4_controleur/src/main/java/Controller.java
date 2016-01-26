@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -27,9 +28,8 @@ public class Controller extends Application implements Initializable{
 
     public void start(Stage primaryStage) throws Exception {
         String path = "./main/resources/vue_tp2_2.fxml";
-        System.out.print(getClass().getResource(path));
-        root = FXMLLoader.load(getClass().getResource(
-                path));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(path));
+        root = fxmlLoader.load();
         scene = new Scene(root);
 
 
@@ -37,7 +37,9 @@ public class Controller extends Application implements Initializable{
         primaryStage.setScene(scene);
         primaryStage.show();
 
-
+        primaryStage.setOnCloseRequest((WindowEvent event)->
+            ((ControllerFXML)fxmlLoader.getController()).quit()
+        );
     }
 
     @Override
