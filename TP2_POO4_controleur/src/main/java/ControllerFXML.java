@@ -97,6 +97,44 @@ public class ControllerFXML implements Initializable, Observer {
 
     @FXML
     void start(ActionEvent event) {
+
+        if (fieldTextTemp1==null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Avertissement");
+            alert.setHeaderText("Valeur Manquante");
+            alert.setContentText("Il n'y a aucune valeur pour le temps T1");
+            alert.showAndWait();
+        }
+        else if (fieldTextTemp2== null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Avertissement");
+            alert.setHeaderText("Valeur Manquante");
+            alert.setContentText("Il n'y a aucune valeur pour le temps T2");
+            alert.showAndWait();
+        }
+        else if (fieldTextDelta1==null ){
+            if (Integer.parseInt(fieldTextDelta1.getPromptText())>0){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Avertissement");
+                alert.setHeaderText("Valeur incorrect");
+                alert.setContentText("La valeur du Delta 1 doit être négative.");
+                alert.showAndWait();
+            }
+            else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Avertissement");
+                alert.setHeaderText("Valeur Manquante");
+                alert.setContentText("Il n'y a aucune valeur pour le Delta 1");
+                alert.showAndWait();}
+        }
+        else if (fieldTextDelta2==null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Avertissement");
+            alert.setHeaderText("Valeur Manquante");
+            alert.setContentText("Il n'y a aucune valeur pour le Delta 2");
+            alert.showAndWait();
+        }
+        else{
         reserve = new Reserve();
         reserve.addObserver(this);
         thrConsumme = new ThrConsumme(reserve,Integer.parseInt(fieldTextTemp1.getText()),Integer.parseInt(fieldTextDelta1.getText()));
@@ -108,6 +146,7 @@ public class ControllerFXML implements Initializable, Observer {
         tnRAZ.setDisable(true);
         btnStart.setDisable(true);
         btnStop.setDisable(false);
+        }
     }
 
 

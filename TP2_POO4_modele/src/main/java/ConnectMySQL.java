@@ -12,14 +12,56 @@ import java.util.Observable;
  * Created by 1494778 on 2016-01-21.
  */
 public class ConnectMySQL extends Observable{
-    private static String URL = "jdbc:mysql://localhost/tp6";
-    private static String UTILISATEUR = "javauser";
-    private static String MOT_DE_PASSE = "TP6";
+    private static String URL = "jdbc:mysql://localhost/tp2_simulation_stock";
+    private static String UTILISATEUR = "usager_tp2_POO4";
+    private static String MOT_DE_PASSE = "1234";
+    private int id_simulation;
 
-   public void addStatistic(int  num, int tempX, int delta, int stock, int ruptureStock, int quantityRuptureStock, int costPenality,int averageStock ) {
+    public ConnectMySQL(){
+    id_simulation=0;
+    }
+
+    public int getId_simulation() {
+        return id_simulation;
+    }
+
+    public void setId_simulation() {
+
+        Connection connexion = null;
+        String countIdSimulation ="select count(distinct idSimulation) from simulation ";
+        int  numIDsimulation=0 ;
+         int id_sim=1;
+        try {
+            connexion = DriverManager.getConnection(URL, UTILISATEUR,
+                    MOT_DE_PASSE);
+
+
+            if (numIDsimulation !=0){
+
+            } else{
+                this.id_simulation = id_sim;
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        } finally {
+            if (connexion != null)
+                try {
+					/* Fermeture de la connexion */
+                    connexion.close();
+                } catch (SQLException ignore) {
+					/*
+					 * Si une erreur survient lors de la fermeture, il suffit de
+					 * l'ignorer.
+					 */
+                }
+        }
+    }
+
+   public void addStatistic(int  num, String tempX, int delta, int stock, int ruptureStock, int quantityRuptureStock, int costPenality, int averageStock, String thread ) {
        Connection connexion = null;
-
-       String insertlist = "Insert into film values ('" + num + "' , '" + tempX + "','" + delta + "','" + stock + "','"
+       setId_simulation();
+       String insertlist = "Insert into simulation values ('" + id_simulation + "' ,'" + thread + "' ,'" + num + "' , '" + tempX + "','" + delta + "','" + stock + "','"
                + ruptureStock + "','" + quantityRuptureStock + "','" + costPenality + "','" + averageStock + "')";
        try {
            connexion = DriverManager.getConnection(URL, UTILISATEUR,

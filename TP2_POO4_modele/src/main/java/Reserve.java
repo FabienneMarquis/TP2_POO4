@@ -11,12 +11,13 @@ public class Reserve extends Observable{
     public static int PRICE_PENALITY = 20, PRICE_PER_STOCK = 5;
     private int num,delta,stock, outstock,quantitySoldOut,totalPenality,averageStock,totalStock;
     String tempX;
-
+    public  ConnectMySQL connection = new ConnectMySQL();
     public Reserve(){
         stock = 500;
          }
 
     public synchronized void consommez(int quantity){
+        String thread = "consommer";
         num++;
         tempX="T1";
         delta = quantity;
@@ -30,11 +31,12 @@ public class Reserve extends Observable{
         averageStock = totalStock/num;
         setChanged();
         notifyObservers(new Result(num, tempX, delta, stock, outstock, quantitySoldOut, totalPenality, averageStock));
-        //faire l'enregistrement des stats dans la base de données (utiliser le ConnectMySQL)
+        connection.addStatistic(num, tempX, delta, stock, outstock, quantitySoldOut, totalPenality, averageStock, thread);
 
     }
 
     public synchronized void produire(int quantity){
+        String thread = "produire";
         stock+= quantity;
         num++;
         tempX="T2";
@@ -42,7 +44,7 @@ public class Reserve extends Observable{
         averageStock = totalStock/num;
         setChanged();
         notifyObservers(new Result(num, tempX, delta, stock, outstock, quantitySoldOut, totalPenality, averageStock));
-        //faire l'enregistrement des stats dans la base de données (utiliser le ConnectMySQL)
+        connection.addStatistic(num, tempX, delta, stock, outstock, quantitySoldOut, totalPenality, averageStock, thread);
     }
 
 

@@ -13,7 +13,7 @@ public class Result {
     private StringProperty tempX;
     private IntegerProperty num, delta, stock, ruptureStock, quantityRuptureStock, costPenality, averageStock;
 
-    Result(int num, String tempX, int delta, int stock, int ruptureStock, int quantityRuptureStock, int costPenality, int averageStock) {
+    Result( int num, String tempX, int delta, int stock, int ruptureStock, int quantityRuptureStock, int costPenality, int averageStock) {
         this.num = new SimpleIntegerProperty(num);
         this.tempX = new SimpleStringProperty(tempX);
         this.delta = new SimpleIntegerProperty(delta);
