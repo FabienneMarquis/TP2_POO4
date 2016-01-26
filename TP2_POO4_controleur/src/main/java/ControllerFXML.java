@@ -99,6 +99,7 @@ public class ControllerFXML implements Initializable, Observer {
     void start(ActionEvent event) {
 
         if (fieldTextTemp1.getText().isEmpty()){
+
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Avertissement");
             alert.setHeaderText("Valeur Manquante");
@@ -128,17 +129,31 @@ public class ControllerFXML implements Initializable, Observer {
             alert.showAndWait();
         }
         else{
-            reserve = new Reserve();
-            reserve.addObserver(this);
-            thrConsumme = new ThrConsumme(reserve,Integer.parseInt(fieldTextTemp1.getText()),Integer.parseInt(fieldTextDelta1.getText()));
-            thrConsummePoolExc = new ScheduledThreadPoolExecutor(6);
-            thrConsummePoolExc.scheduleWithFixedDelay(thrConsumme, 0, thrConsumme.getTemps1(), TimeUnit.MILLISECONDS);
-            productionThreadPoolExc = new ScheduledThreadPoolExecutor(3);
-            thrProduction = new ThrProduction(reserve,Integer.parseInt(fieldTextTemp2.getText()),Integer.parseInt(fieldTextDelta2.getText()));
-            productionThreadPoolExc.scheduleWithFixedDelay(thrProduction, 0, thrProduction.getTemps2(), TimeUnit.MILLISECONDS);
-            btnStart.setDisable(true);
-            tnRAZ.setDisable(true);
-            btnStop.setDisable(false);
+            try {
+                Integer.parseInt(fieldTextDelta1.getText());
+                Integer.parseInt(fieldTextDelta2.getText());
+                Integer.parseInt(fieldTextTemp1.getText());
+                Integer.parseInt(fieldTextTemp2.getText());
+                reserve = new Reserve();
+                reserve.addObserver(this);
+                thrConsumme = new ThrConsumme(reserve,Integer.parseInt(fieldTextTemp1.getText()),Integer.parseInt(fieldTextDelta1.getText()));
+                thrConsummePoolExc = new ScheduledThreadPoolExecutor(6);
+                thrConsummePoolExc.scheduleWithFixedDelay(thrConsumme, 0, thrConsumme.getTemps1(), TimeUnit.MILLISECONDS);
+                productionThreadPoolExc = new ScheduledThreadPoolExecutor(3);
+                thrProduction = new ThrProduction(reserve,Integer.parseInt(fieldTextTemp2.getText()),Integer.parseInt(fieldTextDelta2.getText()));
+                productionThreadPoolExc.scheduleWithFixedDelay(thrProduction, 0, thrProduction.getTemps2(), TimeUnit.MILLISECONDS);
+                btnStart.setDisable(true);
+                tnRAZ.setDisable(true);
+                btnStop.setDisable(false);
+            }catch (NumberFormatException e){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Avertissement");
+                alert.setHeaderText("Caractère invalide");
+                alert.setContentText("Il y un caractère invalide dans un des textfield, vous devez utiliser que des chiffres");
+                alert.showAndWait();
+            }
+
+
         }
     }
 
