@@ -23,19 +23,58 @@ public class ConnectMySQL {
 
     public ConnectMySQL(){
         year = Calendar.getInstance().get(Calendar.YEAR);
-
+        addYear(year);
     }
 
 
+    public void addYear(int year){
+        Connection connexion = null;
+//voir pour l'année actuel?? idSim, Id thred (T1 ou T2), QTe (delta), Stock, nmb RuptureStock, Qte_RS, Penalité, QTe
+        String insertlist = "Insert into `annee`  values(" + year +");";
+        System.out.println(insertlist);
+        try {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
 
+            connexion = DriverManager.getConnection(URL, UTILISATEUR,
+                    MOT_DE_PASSE);
+			/* Création de l'objet gérant les requêtes */
+            Statement statement = connexion.createStatement();
+
+            int statut = statement.executeUpdate(insertlist);
+
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        } finally {
+            if (connexion != null)
+                try {
+					/* Fermeture de la connexion */
+                    connexion.close();
+                } catch (SQLException ignore) {
+					/*
+					 * Si une erreur survient lors de la fermeture, il suffit de
+					 * l'ignorer.
+					 */
+                }
+        }
+    }
 
    public void addStatistic( int num, String tempX, int delta, int stock, int ruptureStock, int quantityRuptureStock, int costPenality,int averageStock) {
        Connection connexion = null;
 //voir pour l'année actuel?? idSim, Id thred (T1 ou T2), QTe (delta), Stock, nmb RuptureStock, Qte_RS, Penalité, QTe
-       String insertlist = "Insert into `simulation`( `num`, `idThread`, `Qte`, `Stock`, `Nombre_RS`, `Qte_RS`, `Penalité`, `QteMoy`, `Annee`)  values(" + num + " , '" + tempX + "'," + delta + " ," + stock + ","
+       String insertlist = "Insert into `simulation`( `idSimulation`, `idThread`, `Qte`, `Stock`, `Nombre_RS`, `Qte_RS`, `Penalité`, `QteMoy`, `Annee`)  values(" + num + " , '" + tempX + "'," + delta + " ," + stock + ","
                + ruptureStock + "," + quantityRuptureStock + "," + costPenality + "," + averageStock + ", "+year+");";
        System.out.println(insertlist);
        try {
+           try {
+               Class.forName("com.mysql.jdbc.Driver");
+           } catch (ClassNotFoundException e) {
+               e.printStackTrace();
+           }
+
            connexion = DriverManager.getConnection(URL, UTILISATEUR,
                    MOT_DE_PASSE);
 			/* Création de l'objet gérant les requêtes */
