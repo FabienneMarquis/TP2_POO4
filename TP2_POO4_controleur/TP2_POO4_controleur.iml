@@ -15,5 +15,6 @@
     <orderEntry type="module" module-name="TP2_POO4_vue" />
     <orderEntry type="library" name="Maven: TP2_POO4_modele:TP2_POO4_FM_GP:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: TP2_POO4_vue:TP2_POO4_FM_GP:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.12" level="project" />
   </component>
 </module>

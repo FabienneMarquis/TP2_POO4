@@ -5,7 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerFXML">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerFXML">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
@@ -171,8 +171,14 @@
             <Label text="Exécution des opétations" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="btnStart" mnemonicParsing="false" onAction="#start" text="Démarrer" />
-                  <Button fx:id="btnStop" mnemonicParsing="false" onAction="#stop" text="Arrêter" />
+                  <Button fx:id="btnStart" mnemonicParsing="false" onAction="#start" text="Démarrer">
+                     <HBox.margin>
+                        <Insets right="60.0" />
+                     </HBox.margin></Button>
+                  <Button fx:id="btnStop" mnemonicParsing="false" onAction="#stop" text="Arrêter">
+                     <HBox.margin>
+                        <Insets right="60.0" />
+                     </HBox.margin></Button>
                   <Button fx:id="tnRAZ" mnemonicParsing="false" onAction="#doRAZ" text="R.A.Z." />
                </children>
             </HBox>

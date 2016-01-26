@@ -97,17 +97,49 @@ public class ControllerFXML implements Initializable, Observer {
 
     @FXML
     void start(ActionEvent event) {
-        reserve = new Reserve();
-        reserve.addObserver(this);
-        thrConsumme = new ThrConsumme(reserve,Integer.parseInt(fieldTextTemp1.getText()),Integer.parseInt(fieldTextDelta1.getText()));
-        thrConsummePoolExc = new ScheduledThreadPoolExecutor(6);
-        thrConsummePoolExc.scheduleWithFixedDelay(thrConsumme, 0, thrConsumme.getTemps1(), TimeUnit.MILLISECONDS);
-        productionThreadPoolExc = new ScheduledThreadPoolExecutor(3);
-        thrProduction = new ThrProduction(reserve,Integer.parseInt(fieldTextTemp2.getText()),Integer.parseInt(fieldTextDelta2.getText()));
-        productionThreadPoolExc.scheduleWithFixedDelay(thrProduction, 0, thrProduction.getTemps2(), TimeUnit.MILLISECONDS);
-        tnRAZ.setDisable(true);
-        btnStart.setDisable(true);
-        btnStop.setDisable(false);
+
+        if (fieldTextTemp1.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Avertissement");
+            alert.setHeaderText("Valeur Manquante");
+            alert.setContentText("Il n'y a aucune valeur pour le temps T1");
+            alert.showAndWait();
+        }
+        else if (fieldTextTemp2.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Avertissement");
+            alert.setHeaderText("Valeur Manquante");
+            alert.setContentText("Il n'y a aucune valeur pour le temps T2");
+            alert.showAndWait();
+        }
+        else if (fieldTextDelta1.getText().isEmpty() ){
+
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Avertissement");
+                alert.setHeaderText("Valeur Manquante");
+                alert.setContentText("Il n'y a aucune valeur pour le Delta 1");
+                alert.showAndWait();
+        }
+        else if (fieldTextDelta2.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Avertissement");
+            alert.setHeaderText("Valeur Manquante");
+            alert.setContentText("Il n'y a aucune valeur pour le Delta 2");
+            alert.showAndWait();
+        }
+        else{
+            reserve = new Reserve();
+            reserve.addObserver(this);
+            thrConsumme = new ThrConsumme(reserve,Integer.parseInt(fieldTextTemp1.getText()),Integer.parseInt(fieldTextDelta1.getText()));
+            thrConsummePoolExc = new ScheduledThreadPoolExecutor(6);
+            thrConsummePoolExc.scheduleWithFixedDelay(thrConsumme, 0, thrConsumme.getTemps1(), TimeUnit.MILLISECONDS);
+            productionThreadPoolExc = new ScheduledThreadPoolExecutor(3);
+            thrProduction = new ThrProduction(reserve,Integer.parseInt(fieldTextTemp2.getText()),Integer.parseInt(fieldTextDelta2.getText()));
+            productionThreadPoolExc.scheduleWithFixedDelay(thrProduction, 0, thrProduction.getTemps2(), TimeUnit.MILLISECONDS);
+            btnStart.setDisable(true);
+            tnRAZ.setDisable(true);
+            btnStop.setDisable(false);
+        }
     }
 
 
@@ -142,7 +174,7 @@ public class ControllerFXML implements Initializable, Observer {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-
+        btnStop.setDisable(true);
         tableauOperation.setItems(results);
         tableauNum.setCellValueFactory(cellData -> cellData.getValue().numProperty().asObject());
         tableauAvg.setCellValueFactory(cellData -> cellData.getValue().averageStockProperty().asObject());

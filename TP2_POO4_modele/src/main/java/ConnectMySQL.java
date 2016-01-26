@@ -1,40 +1,47 @@
 package main.java;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
+
+import com.sun.org.apache.xpath.internal.SourceTree;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
-import java.util.Observable;
+
 
 /**
  * Created by 1494778 on 2016-01-21.
  */
-public class ConnectMySQL extends Observable{
-    private static String URL = "jdbc:mysql://localhost/tp6";
-    private static String UTILISATEUR = "javauser";
-    private static String MOT_DE_PASSE = "TP6";
+public class ConnectMySQL {
+    private static String URL = "jdbc:mysql://localhost/tp2_simulation_stock";
+    private static String UTILISATEUR = "root";
+    private static String MOT_DE_PASSE = "";
 
-   public void addStatistic(int  num, int tempX, int delta, int stock, int ruptureStock, int quantityRuptureStock, int costPenality,int averageStock ) {
+
+    private int year;
+
+    public ConnectMySQL(){
+        year = Calendar.getInstance().get(Calendar.YEAR);
+
+    }
+
+
+
+
+   public void addStatistic( int num, String tempX, int delta, int stock, int ruptureStock, int quantityRuptureStock, int costPenality,int averageStock) {
        Connection connexion = null;
-
-       String insertlist = "Insert into film values ('" + num + "' , '" + tempX + "','" + delta + "','" + stock + "','"
-               + ruptureStock + "','" + quantityRuptureStock + "','" + costPenality + "','" + averageStock + "')";
+//voir pour l'année actuel?? idSim, Id thred (T1 ou T2), QTe (delta), Stock, nmb RuptureStock, Qte_RS, Penalité, QTe
+       String insertlist = "Insert into `simulation`( `num`, `idThread`, `Qte`, `Stock`, `Nombre_RS`, `Qte_RS`, `Penalité`, `QteMoy`, `Annee`)  values(" + num + " , '" + tempX + "'," + delta + " ," + stock + ","
+               + ruptureStock + "," + quantityRuptureStock + "," + costPenality + "," + averageStock + ", "+year+");";
+       System.out.println(insertlist);
        try {
            connexion = DriverManager.getConnection(URL, UTILISATEUR,
                    MOT_DE_PASSE);
 			/* Création de l'objet gérant les requêtes */
            Statement statement = connexion.createStatement();
+
            int statut = statement.executeUpdate(insertlist);
-			/* Récupération des données du résultat de la requête de lecture */
-
-           if (statut == 1) {
-
-
-
-           }
-
 
        } catch (SQLException e) {
            System.out.println(e.toString());
@@ -50,8 +57,6 @@ public class ConnectMySQL extends Observable{
 					 */
                }
        }
-
-
    }
 
     private List<Result> getStatistic() {
@@ -66,7 +71,7 @@ public class ConnectMySQL extends Observable{
 			/* Création de l'objet gérant les requêtes */
             Statement statement = connexion.createStatement();
             ResultSet resultat = statement
-                    .executeQuery("SELECT * FROM ;");
+                    .executeQuery("SELECT * FROM simulation;");
 			/* Récupération des données du résultat de la requête de lecture */
             while (resultat.next()) {
 
@@ -75,8 +80,6 @@ public class ConnectMySQL extends Observable{
                         (Integer.parseInt(resultat.getString("costPenality"))),(Integer.parseInt(resultat.getString("averageStock"))));
                 statistique.add(result);
             }
-
-
         } catch (SQLException e) {
             System.out.println(e.toString());
         } finally {
@@ -92,6 +95,5 @@ public class ConnectMySQL extends Observable{
                 }
         }
         return statistique;
-
 }
 }
